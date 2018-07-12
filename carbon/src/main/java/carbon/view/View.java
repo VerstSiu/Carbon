@@ -793,7 +793,7 @@ public abstract class View extends android.view.View
         backgroundMutable = mutable;
         Drawable background = getBackground();
 
-        if (background != null) {
+        if (mutable && background != null) {
             super.setBackgroundDrawable(background.mutate());
         }
     }

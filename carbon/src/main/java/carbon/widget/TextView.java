@@ -1094,7 +1094,7 @@ public class TextView extends android.widget.TextView
         backgroundMutable = mutable;
         Drawable background = getBackground();
 
-        if (background != null) {
+        if (mutable && background != null) {
             super.setBackgroundDrawable(background.mutate());
         }
     }

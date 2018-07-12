@@ -318,7 +318,7 @@ public class ViewPager extends android.support.v4.view.ViewPager implements Tint
         backgroundMutable = mutable;
         Drawable background = getBackground();
 
-        if (background != null) {
+        if (mutable && background != null) {
             super.setBackgroundDrawable(background.mutate());
         }
     }

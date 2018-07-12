@@ -946,7 +946,7 @@ public class Button extends android.widget.Button
         backgroundMutable = mutable;
         Drawable background = getBackground();
 
-        if (background != null) {
+        if (mutable && background != null) {
             super.setBackgroundDrawable(background.mutate());
         }
     }

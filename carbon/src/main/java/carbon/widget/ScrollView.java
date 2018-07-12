@@ -266,7 +266,7 @@ public class ScrollView extends android.widget.ScrollView implements TintedView,
         backgroundMutable = mutable;
         Drawable background = getBackground();
 
-        if (background != null) {
+        if (mutable && background != null) {
             super.setBackgroundDrawable(background.mutate());
         }
     }

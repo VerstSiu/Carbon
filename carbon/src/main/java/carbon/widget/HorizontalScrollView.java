@@ -290,7 +290,7 @@ public class HorizontalScrollView extends android.widget.HorizontalScrollView im
         backgroundMutable = mutable;
         Drawable background = getBackground();
 
-        if (background != null) {
+        if (mutable && background != null) {
             super.setBackgroundDrawable(background.mutate());
         }
     }

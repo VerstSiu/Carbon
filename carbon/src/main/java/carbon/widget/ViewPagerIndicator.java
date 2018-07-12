@@ -207,9 +207,9 @@ public class ViewPagerIndicator extends View implements TintedView, VisibleView 
         backgroundMutable = mutable;
         Drawable background = getBackground();
 
-        if (background != null) {
-            super.setBackgroundDrawable(background.mutate());
-        }
+      if (mutable && background != null) {
+        super.setBackgroundDrawable(background.mutate());
+      }
     }
 
     @Override

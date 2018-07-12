@@ -1115,7 +1115,7 @@ public class RecyclerView extends android.support.v7.widget.RecyclerView
         backgroundMutable = mutable;
         Drawable background = getBackground();
 
-        if (background != null) {
+        if (mutable && background != null) {
             super.setBackgroundDrawable(background.mutate());
         }
     }

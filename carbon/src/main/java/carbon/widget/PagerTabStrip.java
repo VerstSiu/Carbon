@@ -390,7 +390,7 @@ public class PagerTabStrip extends android.widget.HorizontalScrollView implement
         backgroundMutable = mutable;
         Drawable background = getBackground();
 
-        if (background != null) {
+        if (mutable && background != null) {
             super.setBackgroundDrawable(background.mutate());
         }
     }
