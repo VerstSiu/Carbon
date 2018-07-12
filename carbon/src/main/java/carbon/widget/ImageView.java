@@ -142,7 +142,7 @@ public class ImageView extends android.widget.ImageView
 
         new AppCompatImageHelper(this).loadFromAttributes(attrs, defStyleAttr);
 
-        Carbon.initDefaultBackground(this, a, R.styleable.ImageView_android_background);
+        Carbon.initDefaultBackground(this, a, R.styleable.ImageView_android_background, R.styleable.ImageView_carbon_backgroundMutable);
 
         Carbon.initElevation(this, a, elevationIds);
         Carbon.initRippleDrawable(this, a, rippleIds);
@@ -446,7 +446,11 @@ public class ImageView extends android.widget.ImageView
             rippleDrawable.setCallback(null);
             rippleDrawable = null;
         }
-        super.setBackgroundDrawable(background);
+        if (background != null && getBackgroundMutable()) {
+            super.setBackgroundDrawable(background.mutate());
+        } else {
+            super.setBackgroundDrawable(background);
+        }
         updateBackgroundTint();
     }
 
@@ -779,6 +783,7 @@ public class ImageView extends android.widget.ImageView
 
     ColorStateList tint;
     PorterDuff.Mode tintMode;
+    boolean backgroundMutable;
     ColorStateList backgroundTint;
     PorterDuff.Mode backgroundTintMode;
     boolean animateColorChanges;
@@ -830,6 +835,21 @@ public class ImageView extends android.widget.ImageView
     @Override
     public PorterDuff.Mode getTintMode() {
         return tintMode;
+    }
+
+    @Override
+    public void setBackgroundMutable(boolean mutable) {
+        backgroundMutable = mutable;
+        Drawable background = getBackground();
+
+        if (background != null) {
+            super.setBackgroundDrawable(background.mutate());
+        }
+    }
+
+    @Override
+    public boolean getBackgroundMutable() {
+        return backgroundMutable;
     }
 
     @Deprecated

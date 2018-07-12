@@ -9,6 +9,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -324,6 +325,7 @@ public class PagerTabStrip extends android.widget.HorizontalScrollView implement
 
     ColorStateList tint;
     PorterDuff.Mode tintMode;
+    boolean backgroundMutable;
     ColorStateList backgroundTint;
     PorterDuff.Mode backgroundTintMode;
     boolean animateColorChanges;
@@ -383,6 +385,21 @@ public class PagerTabStrip extends android.widget.HorizontalScrollView implement
         return tintMode;
     }
 
+    @Override
+    public void setBackgroundMutable(boolean mutable) {
+        backgroundMutable = mutable;
+        Drawable background = getBackground();
+
+        if (background != null) {
+            super.setBackgroundDrawable(background.mutate());
+        }
+    }
+
+    @Override
+    public boolean getBackgroundMutable() {
+        return backgroundMutable;
+    }
+
     @Deprecated
     public void setBackgroundTint(ColorStateList list) {
         setBackgroundTintList(list);
@@ -424,6 +441,20 @@ public class PagerTabStrip extends android.widget.HorizontalScrollView implement
     @Override
     public PorterDuff.Mode getBackgroundTintMode() {
         return backgroundTintMode;
+    }
+
+    @Override
+    public void setBackground(Drawable background) {
+        setBackgroundDrawable(background);
+    }
+
+    @Override
+    public void setBackgroundDrawable(Drawable background) {
+        if (background != null && getBackgroundMutable()) {
+            super.setBackgroundDrawable(background.mutate());
+        } else {
+            super.setBackgroundDrawable(background);
+        }
     }
 
     public boolean isAnimateColorChangesEnabled() {

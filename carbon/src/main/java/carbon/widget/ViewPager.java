@@ -254,6 +254,7 @@ public class ViewPager extends android.support.v4.view.ViewPager implements Tint
 
     ColorStateList tint;
     PorterDuff.Mode tintMode;
+    boolean backgroundMutable;
     ColorStateList backgroundTint;
     PorterDuff.Mode backgroundTintMode;
     boolean animateColorChanges;
@@ -312,6 +313,21 @@ public class ViewPager extends android.support.v4.view.ViewPager implements Tint
         return tintMode;
     }
 
+    @Override
+    public void setBackgroundMutable(boolean mutable) {
+        backgroundMutable = mutable;
+        Drawable background = getBackground();
+
+        if (background != null) {
+            super.setBackgroundDrawable(background.mutate());
+        }
+    }
+
+    @Override
+    public boolean getBackgroundMutable() {
+        return backgroundMutable;
+    }
+
     @Deprecated
     public void setBackgroundTint(ColorStateList list) {
         setBackgroundTintList(list);
@@ -353,6 +369,20 @@ public class ViewPager extends android.support.v4.view.ViewPager implements Tint
     @Override
     public PorterDuff.Mode getBackgroundTintMode() {
         return backgroundTintMode;
+    }
+
+    @Override
+    public void setBackground(Drawable background) {
+        setBackgroundDrawable(background);
+    }
+
+    @Override
+    public void setBackgroundDrawable(Drawable background) {
+        if (background != null && getBackgroundMutable()) {
+            super.setBackgroundDrawable(background.mutate());
+        } else {
+            super.setBackgroundDrawable(background);
+        }
     }
 
     public boolean isAnimateColorChangesEnabled() {

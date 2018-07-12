@@ -73,6 +73,7 @@
         <enum name="screen" value="4"/>
         <enum name="add" value="5"/>
     </attr>
+    <attr name="carbon_backgroundMutable" format="boolean"/>
     <attr name="carbon_backgroundTint" format="color|reference"/>
     <attr name="carbon_backgroundTintMode" format="enum">
         <enum name="src_over" value="0"/>
@@ -219,6 +220,7 @@
 
         <attr name="carbon_tint"/>
         <attr name="carbon_tintMode"/>
+        <attr name="carbon_backgroundMutable"/>
         <attr name="carbon_backgroundTint"/>
         <attr name="carbon_backgroundTintMode"/>
         <attr name="carbon_animateColorChanges"/>
@@ -257,6 +259,7 @@
 
         <attr name="carbon_tint"/>
         <attr name="carbon_tintMode"/>
+        <attr name="carbon_backgroundMutable"/>
         <attr name="carbon_backgroundTint"/>
         <attr name="carbon_backgroundTintMode"/>
         <attr name="carbon_animateColorChanges"/>
@@ -305,6 +308,7 @@
 
         <attr name="carbon_tint"/>
         <attr name="carbon_tintMode"/>
+        <attr name="carbon_backgroundMutable"/>
         <attr name="carbon_backgroundTint"/>
         <attr name="carbon_backgroundTintMode"/>
         <attr name="carbon_animateColorChanges"/>
@@ -779,6 +783,7 @@
 
         <attr name="carbon_tint"/>
         <attr name="carbon_tintMode"/>
+        <attr name="carbon_backgroundMutable"/>
         <attr name="carbon_backgroundTint"/>
         <attr name="carbon_backgroundTintMode"/>
         <attr name="carbon_animateColorChanges"/>
@@ -798,6 +803,7 @@
 
         <attr name="carbon_tint"/>
         <attr name="carbon_tintMode"/>
+        <attr name="carbon_backgroundMutable"/>
         <attr name="carbon_backgroundTint"/>
         <attr name="carbon_backgroundTintMode"/>
         <attr name="carbon_animateColorChanges"/>
@@ -892,6 +898,7 @@
 
         <attr name="carbon_tint"/>
         <attr name="carbon_tintMode"/>
+        <attr name="carbon_backgroundMutable"/>
         <attr name="carbon_backgroundTint"/>
         <attr name="carbon_backgroundTintMode"/>
         <attr name="carbon_animateColorChanges"/>
@@ -945,6 +952,7 @@
 
         <attr name="carbon_tint"/>
         <attr name="carbon_tintMode"/>
+        <attr name="carbon_backgroundMutable"/>
         <attr name="carbon_backgroundTint"/>
         <attr name="carbon_backgroundTintMode"/>
         <attr name="carbon_animateColorChanges"/>
@@ -959,6 +967,7 @@
 
         <attr name="carbon_tint"/>
         <attr name="carbon_tintMode"/>
+        <attr name="carbon_backgroundMutable"/>
         <attr name="carbon_backgroundTint"/>
         <attr name="carbon_backgroundTintMode"/>
         <attr name="carbon_animateColorChanges"/>
@@ -975,6 +984,7 @@
 
         <attr name="carbon_tint"/>
         <attr name="carbon_tintMode"/>
+        <attr name="carbon_backgroundMutable"/>
         <attr name="carbon_backgroundTint"/>
         <attr name="carbon_backgroundTintMode"/>
         <attr name="carbon_animateColorChanges"/>
@@ -991,6 +1001,7 @@
 
         <attr name="carbon_tint"/>
         <attr name="carbon_tintMode"/>
+        <attr name="carbon_backgroundMutable"/>
         <attr name="carbon_backgroundTint"/>
         <attr name="carbon_backgroundTintMode"/>
         <attr name="carbon_animateColorChanges"/>
@@ -1004,6 +1015,7 @@
 
         <attr name="carbon_tint"/>
         <attr name="carbon_tintMode"/>
+        <attr name="carbon_backgroundMutable"/>
         <attr name="carbon_backgroundTint"/>
         <attr name="carbon_backgroundTintMode"/>
         <attr name="carbon_animateColorChanges"/>
@@ -1020,6 +1032,7 @@
 
         <attr name="carbon_tint"/>
         <attr name="carbon_tintMode"/>
+        <attr name="carbon_backgroundMutable"/>
         <attr name="carbon_backgroundTint"/>
         <attr name="carbon_backgroundTintMode"/>
         <attr name="carbon_animateColorChanges"/>
@@ -1092,6 +1105,7 @@
 
         <attr name="carbon_tint"/>
         <attr name="carbon_tintMode"/>
+        <attr name="carbon_backgroundMutable"/>
         <attr name="carbon_backgroundTint"/>
         <attr name="carbon_backgroundTintMode"/>
         <attr name="carbon_animateColorChanges"/>

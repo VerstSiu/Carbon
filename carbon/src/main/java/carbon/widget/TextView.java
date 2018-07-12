@@ -215,7 +215,7 @@ public class TextView extends android.widget.TextView
         if (italic)
             paint.setTextSkewX(-0.25f);
 
-        Carbon.initDefaultBackground(this, a, R.styleable.TextView_android_background);
+        Carbon.initDefaultBackground(this, a, R.styleable.TextView_android_background, R.styleable.TextView_carbon_backgroundMutable);
         Carbon.initDefaultTextColor(this, a, R.styleable.TextView_android_textColor);
 
         Carbon.initRippleDrawable(this, a, rippleIds);
@@ -672,7 +672,11 @@ public class TextView extends android.widget.TextView
             rippleDrawable.setCallback(null);
             rippleDrawable = null;
         }
-        super.setBackgroundDrawable(background);
+        if (background != null && getBackgroundMutable()) {
+            super.setBackgroundDrawable(background.mutate());
+        } else {
+            super.setBackgroundDrawable(background);
+        }
         updateBackgroundTint();
     }
 
@@ -1022,6 +1026,7 @@ public class TextView extends android.widget.TextView
 
     ColorStateList tint;
     PorterDuff.Mode tintMode;
+    boolean backgroundMutable;
     ColorStateList backgroundTint;
     PorterDuff.Mode backgroundTintMode;
     boolean animateColorChanges;
@@ -1082,6 +1087,21 @@ public class TextView extends android.widget.TextView
     @Override
     public PorterDuff.Mode getTintMode() {
         return tintMode;
+    }
+
+    @Override
+    public void setBackgroundMutable(boolean mutable) {
+        backgroundMutable = mutable;
+        Drawable background = getBackground();
+
+        if (background != null) {
+            super.setBackgroundDrawable(background.mutate());
+        }
+    }
+
+    @Override
+    public boolean getBackgroundMutable() {
+        return backgroundMutable;
     }
 
     @Deprecated

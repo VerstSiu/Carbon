@@ -135,10 +135,17 @@ public class Carbon {
         return null;
     }
 
-    public static void initDefaultBackground(View view, TypedArray a, int id) {
+    public static void initDefaultBackground(View view, TypedArray a, int id, int mutableId) {
         ColorStateList color = getDefaultColorStateList(view, a, id);
-        if (color != null)
+
+        if (view instanceof TintedView) {
+            boolean backgroundMutable = a.getBoolean(mutableId, false);
+
+            ((TintedView) view).setBackgroundMutable(backgroundMutable);
+        }
+        if (color != null) {
             view.setBackgroundDrawable(new ColorStateListDrawable(AnimatedColorStateList.fromList(color, animation -> view.postInvalidate())));
+        }
     }
 
     public static void initDefaultTextColor(TextView view, TypedArray a, int id) {

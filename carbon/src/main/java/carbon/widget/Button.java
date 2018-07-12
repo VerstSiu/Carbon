@@ -180,7 +180,7 @@ public class Button extends android.widget.Button
         if (italic)
             paint.setTextSkewX(-0.25f);
 
-        Carbon.initDefaultBackground(this, a, R.styleable.Button_android_background);
+        Carbon.initDefaultBackground(this, a, R.styleable.Button_android_background, R.styleable.Button_carbon_backgroundMutable);
         Carbon.initDefaultTextColor(this, a, R.styleable.Button_android_textColor);
 
         Carbon.initRippleDrawable(this, a, rippleIds);
@@ -536,7 +536,11 @@ public class Button extends android.widget.Button
             rippleDrawable.setCallback(null);
             rippleDrawable = null;
         }
-        super.setBackgroundDrawable(background);
+        if (background != null && getBackgroundMutable()) {
+            super.setBackgroundDrawable(background.mutate());
+        } else {
+            super.setBackgroundDrawable(background);
+        }
         updateBackgroundTint();
     }
 
@@ -874,6 +878,7 @@ public class Button extends android.widget.Button
 
     ColorStateList tint;
     PorterDuff.Mode tintMode;
+    boolean backgroundMutable;
     ColorStateList backgroundTint;
     PorterDuff.Mode backgroundTintMode;
     boolean animateColorChanges;
@@ -934,6 +939,21 @@ public class Button extends android.widget.Button
     @Override
     public PorterDuff.Mode getTintMode() {
         return tintMode;
+    }
+
+    @Override
+    public void setBackgroundMutable(boolean mutable) {
+        backgroundMutable = mutable;
+        Drawable background = getBackground();
+
+        if (background != null) {
+            super.setBackgroundDrawable(background.mutate());
+        }
+    }
+
+    @Override
+    public boolean getBackgroundMutable() {
+        return backgroundMutable;
     }
 
     @Deprecated

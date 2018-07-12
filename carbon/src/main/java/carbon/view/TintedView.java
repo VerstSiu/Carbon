@@ -53,6 +53,18 @@ public interface TintedView {
     PorterDuff.Mode getTintMode();
 
     /**
+     * Sets background mutable status.
+     *
+     * @param mutable mutable status.
+     */
+    void setBackgroundMutable(boolean mutable);
+
+    /**
+     * Returns background mutable status.
+     */
+    boolean getBackgroundMutable();
+
+    /**
      * Sets the tint of background Drawable
      *
      * @param list a tint color state list
