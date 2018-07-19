@@ -135,12 +135,16 @@ public class CheckableDrawable extends Drawable {
 
     @Override
     public void draw(@NonNull Canvas canvas) {
+        ColorStateList tint = this.tint;
+
         if (checkedBitmap == null)
             renderSVGs();
 
         Rect bounds = getBounds();
 
-        paint.setColorFilter(new PorterDuffColorFilter(tint.getColorForState(getState(), tint.getDefaultColor()), tintMode));
+        if (tint != null) {
+            paint.setColorFilter(new PorterDuffColorFilter(tint.getColorForState(getState(), tint.getDefaultColor()), tintMode));
+        }
 
         if (animator != null && animator.isRunning()) {
             if (currAnim == ANIMATION_FILL) {
